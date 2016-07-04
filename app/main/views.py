@@ -14,7 +14,7 @@ def index():
     print('current_user', current_user)
     print('current_user._get_current_object()',current_user._get_current_object())
     if current_user.can(Permission.WRITE_ARTICLES) and post_form.data['submit']:
-        post = Post(title=post_form.title.data,body=post_form.body.data,
+        post = Post(title=post_form.title.data,summary=post_form.summary.data,body=post_form.body.data,
                     author=current_user._get_current_object())
         db.session.add(post)
         #print('url_for(.index)',url_for('.index'))
@@ -40,7 +40,7 @@ def index():
 def create():
     post_form = PostForm()
     if current_user.can(Permission.WRITE_ARTICLES) and post_form.data['submit']:
-        post = Post(title=post_form.title.data,body=post_form.body.data,
+        post = Post(title=post_form.title.data,summary=post_form.summary.data,body=post_form.body.data,
                     author=current_user._get_current_object())
         db.session.add(post)
         return redirect(url_for('.index'))

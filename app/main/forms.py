@@ -51,12 +51,14 @@ class EditProfileAdminForm(Form):
 
 class PostForm(Form):
     title = StringField("The title", validators=[Required(),Length(5, 32)])
+    summary = StringField("The summary", validators=[Required(), Length(10, 64)])
     body = PageDownField("What's on your mind?", validators=[Required(), Length(10, 64)])
     submit = SubmitField('Submit')
     cancel = SubmitField('Cancel')
 
 class EditForm(Form):
     title = StringField("The title", validators=[Required(), Length(5, 32)])
+    summary = StringField("The summary", validators=[Required(), Length(10, 64)])
     body = PageDownField("What's on your mind?", validators=[Required(), Length(10, 64)])
     submit = SubmitField('Submit')
     cancel = SubmitField('Cancel')
@@ -64,6 +66,7 @@ class EditForm(Form):
 
 class ReadForm(Form):
     title = StringField("The title", validators=[Required(), Length(5, 32)])
+    summary = StringField("The summary", validators=[Required(), Length(10, 64)])
     body = PageDownField("What's on your mind?", validators=[Required(), Length(10, 64)])
 
 
