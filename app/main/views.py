@@ -35,6 +35,29 @@ def index():
                            show_followed=show_followed, pagination=pagination)
 
 
+@main.route('/create', methods=['GET', 'POST'])
+@login_required
+def create():
+    post_form = PostForm()
+    if current_user.can(Permission.WRITE_ARTICLES) and post_form.data['submit']:
+        post = Post(title=post_form.title.data,body=post_form.body.data,
+                    author=current_user._get_current_object())
+        db.session.add(post)
+        return redirect(url_for('.index'))
+    if post_form.data['cancel']:
+        return redirect(url_for('.create'))
+    page = request.args.get('page', 1, type=int)
+    show_followed = False
+    if current_user.is_authenticated:
+        show_followed = bool(request.cookies.get('show_followed', ''))
+    if show_followed:
+        query = current_user.followed_posts
+    else:
+        query = Post.query
+
+    return render_template('create.html', post_form=post_form, show_followed=show_followed)
+
+
 @main.route('/user/<username>')
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()

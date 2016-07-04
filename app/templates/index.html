@@ -5,31 +5,50 @@
 {% block title %}Flasky{% endblock %}
 
 {% block page_content %}
+<!--
 <div class="page-header">
     <h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>
 </div>
+
 <div>
     {% if current_user.can(Permission.WRITE_ARTICLES) %}
     {{ wtf.quick_form(post_form) }}
     {% endif %}
 </div>
-
+-->
 <div class="post-tabs">
+    <!--
     <ul class="nav nav-tabs">
         <li{% if not show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_all') }}">All</a></li>
         {% if current_user.is_authenticated %}
         <li{% if show_followed %} class="active"{% endif %}><a href="{{ url_for('.show_followed') }}">Followers</a></li>
         {% endif %}
     </ul>
+    -->
+    <div  class="pull-right">
+        <h3 class="uk-panel-title">友情链接</h3>
+        <ul class="uk-list uk-list-line">
+            <li> <a target="_blank" href="http://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">Python教程</a></li>
+            <li> <a target="_blank" href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Git教程</a></li>
+            <li> <a target="_blank" href="https://github.com/penglee87/izhihu">Izhihu</a></li>
+        </ul>
+    </div>
     {% include '_posts.html' %}
 
 </div>
+
+
+
 {% if pagination %}
 <div class="pagination">
     {{ macros.pagination_widget(pagination, '.index') }}
 </div>
 {% endif %}
+
+
 {% endblock %}
+
+
 
 {% block scripts %}
 {{ super() }}
