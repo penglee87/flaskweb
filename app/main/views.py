@@ -159,6 +159,7 @@ def edit(id):
     form = EditForm()
     if form.data['submit']:
         post.title = form.title.data
+        post.summary = form.summary.data
         post.body = form.body.data
         db.session.add(post)
         flash('The post has been updated.')
@@ -175,6 +176,7 @@ def edit(id):
         return redirect(url_for('.index'))
 
     form.title.data = post.title
+    form.summary.data = post.summary
     form.body.data = post.body
     return render_template('edit_post.html', form=form)
 
