@@ -20,7 +20,6 @@
 
             <div class="post-body">
                 {% if post.body_html %}
-                    {{ post.summary }}
                     {{ post.body_html | safe }}
                 {% else %}
                     {{ post.body }}
