@@ -11,6 +11,7 @@ from ..decorators import admin_required, permission_required
 @main.route('/', methods=['GET', 'POST'])
 def index():
     post_form = PostForm()
+    '''
     print('current_user', current_user)
     print('current_user._get_current_object()',current_user._get_current_object())
     if current_user.can(Permission.WRITE_ARTICLES) and post_form.data['submit']:
@@ -21,6 +22,7 @@ def index():
         return redirect(url_for('.index'))
     if post_form.data['cancel']:
         return redirect(url_for('.index'))
+    '''
     page = request.args.get('page', 1, type=int)
     show_followed = False
     if current_user.is_authenticated:
@@ -31,8 +33,7 @@ def index():
         query = Post.query
     pagination = query.order_by(Post.timestamp.desc()).paginate(page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],error_out=False)
     posts = pagination.items
-    return render_template('index.html', post_form=post_form, posts=posts,
-                           show_followed=show_followed, pagination=pagination)
+    return render_template('index.html', post_form=post_form, posts=posts,show_followed=show_followed, pagination=pagination)
 
 
 @main.route('/create', methods=['GET', 'POST'])
