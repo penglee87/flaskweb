@@ -1,8 +1,8 @@
-from flask.ext.wtf import Form
+from flask_wtf import Form
 from wtforms import StringField, TextAreaField, BooleanField, SelectField, SubmitField
 from wtforms.validators import Required, Length, Email, Regexp
 from wtforms import ValidationError
-from flask.ext.pagedown.fields import PageDownField
+from flask_pagedown.fields import PageDownField
 from ..models import Role, User
 
 
@@ -57,7 +57,7 @@ class PostForm(Form):
     cancel = SubmitField('Cancel')
 
 class EditForm(Form):
-    title = StringField("The title", validators=[Required(), Length(5, 32)])
+    title = StringField("The title", validators=[Required(), Length(1, 32)])
     summary = StringField("The summary", validators=[Required(), Length(10, 64)])
     body = PageDownField("What's on your mind?", validators=[Required(), Length(10, 64)])
     submit = SubmitField('Submit')
