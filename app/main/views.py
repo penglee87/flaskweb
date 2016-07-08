@@ -118,7 +118,6 @@ def edit_profile_admin(id):
 @main.route('/post/<int:id>', methods=['GET', 'POST'])
 def post(id):
     post = Post.query.get_or_404(id)
-    print('type(post)',type(post))
     form = CommentForm()
     if form.validate_on_submit():
         comment = Comment(body=form.body.data,
