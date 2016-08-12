@@ -6,6 +6,16 @@
 {{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?6e08e0ef97a36085494bf8520e29e1a4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 {% endblock %}
 
 {% block navbar %}
@@ -76,4 +86,6 @@ return str.substr(0, 10);
 }
 
 </script>
+
+
 {% endblock %}
