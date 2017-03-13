@@ -11,7 +11,7 @@ class Config:
     MAIL_PORT = 25
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'jqblee@163.com'
-    MAIL_PASSWORD = 'jq000111'
+    MAIL_PASSWORD = '******'
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
     FLASKY_MAIL_SENDER = 'jqblee@163.com'
     FLASKY_ADMIN = 'penglee87@163.com'
